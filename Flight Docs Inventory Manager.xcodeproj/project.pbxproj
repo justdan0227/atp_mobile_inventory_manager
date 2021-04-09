@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -15,6 +15,8 @@
 		9A9E36112620A45C00B469DD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A9E360F2620A45C00B469DD /* LaunchScreen.storyboard */; };
 		9A9E361B2620ADDA00B469DD /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A9E361A2620ADDA00B469DD /* HomeViewController.swift */; };
 		9A9E361D2620B18B00B469DD /* ATPPartsObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A9E361C2620B18B00B469DD /* ATPPartsObject.swift */; };
+		9A9E361F2620C43000B469DD /* PartsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A9E361E2620C43000B469DD /* PartsTableViewCell.swift */; };
+		9A9E36242620CC5C00B469DD /* PartsDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A9E36232620CC5C00B469DD /* PartsDetailViewController.swift */; };
 		DF553D5B2C9C7F3484600EF7 /* Pods_Flight_Docs_Inventory_Manager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 949670B4B7225CEBF7288F73 /* Pods_Flight_Docs_Inventory_Manager.framework */; };
 /* End PBXBuildFile section */
 
@@ -32,6 +34,8 @@
 		9A9E36122620A45C00B469DD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9A9E361A2620ADDA00B469DD /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		9A9E361C2620B18B00B469DD /* ATPPartsObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ATPPartsObject.swift; sourceTree = "<group>"; };
+		9A9E361E2620C43000B469DD /* PartsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartsTableViewCell.swift; sourceTree = "<group>"; };
+		9A9E36232620CC5C00B469DD /* PartsDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartsDetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,16 +89,42 @@
 			isa = PBXGroup;
 			children = (
 				9A9E360A2620A45B00B469DD /* Main.storyboard */,
-				9A9E361A2620ADDA00B469DD /* HomeViewController.swift */,
 				9A9E36042620A45B00B469DD /* AppDelegate.swift */,
 				9A9E36062620A45B00B469DD /* SceneDelegate.swift */,
-				9A9E36082620A45B00B469DD /* SplashScreen.swift */,
+				9A9E36222620CC2100B469DD /* Models */,
+				9A9E36212620CC0400B469DD /* Controllers */,
+				9A9E36202620CBFA00B469DD /* Cells */,
 				9A9E360D2620A45C00B469DD /* Assets.xcassets */,
 				9A9E360F2620A45C00B469DD /* LaunchScreen.storyboard */,
 				9A9E36122620A45C00B469DD /* Info.plist */,
-				9A9E361C2620B18B00B469DD /* ATPPartsObject.swift */,
 			);
 			path = "Flight Docs Inventory Manager";
+			sourceTree = "<group>";
+		};
+		9A9E36202620CBFA00B469DD /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				9A9E361E2620C43000B469DD /* PartsTableViewCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		9A9E36212620CC0400B469DD /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				9A9E36082620A45B00B469DD /* SplashScreen.swift */,
+				9A9E361A2620ADDA00B469DD /* HomeViewController.swift */,
+				9A9E36232620CC5C00B469DD /* PartsDetailViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		9A9E36222620CC2100B469DD /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				9A9E361C2620B18B00B469DD /* ATPPartsObject.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -211,11 +241,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9A9E361F2620C43000B469DD /* PartsTableViewCell.swift in Sources */,
 				9A9E36092620A45B00B469DD /* SplashScreen.swift in Sources */,
 				9A9E36052620A45B00B469DD /* AppDelegate.swift in Sources */,
 				9A9E36072620A45B00B469DD /* SceneDelegate.swift in Sources */,
 				9A9E361D2620B18B00B469DD /* ATPPartsObject.swift in Sources */,
 				9A9E361B2620ADDA00B469DD /* HomeViewController.swift in Sources */,
+				9A9E36242620CC5C00B469DD /* PartsDetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

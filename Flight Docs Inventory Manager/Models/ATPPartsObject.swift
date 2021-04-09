@@ -30,17 +30,18 @@ class  ATPPartsObject {
     var name: String = ""
     var description: String = ""
     var isActive: Bool = true
-    var image: String = ""
+    var imageURL: String = ""
     var inStock: Int = 0
     var _id = ""
     
     //mutating func getCurrentWeather(city: String, state: String, completion: @escaping(_ success : Bool) ->
     
-    func getAllParts( completion: @escaping(_ success : Bool) -> Void) {
+    func getPart(partNumber: String, completion: @escaping(_ success : Bool, _ returnedPart: ATPPartsObject) -> Void) {
         
     }
                                         
-    func getPart(partNumber: String, completion: @escaping(_ success : Bool, _ returnedArray: [ATPPartsObject]) -> Void) {
+    
+    static func getAllParts( completion: @escaping(_ success : Bool, _ returnedArray:[ATPPartsObject]) -> Void) {
 
         //var urlString = city.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
 
@@ -53,10 +54,6 @@ class  ATPPartsObject {
 
         AF.request(ATP_DB_URL, parameters: parameters).responseJSON { response in
             
-            let result = response.result
-
-            debugPrint(response)
-            
             let json = JSON(response.value as Any)
 //
             var newArray: [ATPPartsObject] = []
@@ -66,7 +63,10 @@ class  ATPPartsObject {
                 let returnedPart:ATPPartsObject = ATPPartsObject()
                 
                 returnedPart.name = json[i]["name"].stringValue
-                returnedPart.partNumber = json[i]["partName"].stringValue
+                returnedPart.partNumber = json[i]["partNumber"].stringValue
+                returnedPart.inStock = json[i]["inStock"].intValue
+                returnedPart.description = json[i]["description"].stringValue
+                returnedPart.imageURL = json[i]["image"].stringValue
                 newArray.append(returnedPart)
 
             }
