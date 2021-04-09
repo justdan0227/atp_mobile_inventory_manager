@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 class PartsDetailViewController: UIViewController {
 
@@ -33,15 +34,17 @@ class PartsDetailViewController: UIViewController {
         
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @IBAction func edit_pressed(_ sender: Any) {
+        performSegue(withIdentifier: "to_edit", sender: nil)
     }
-    */
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "to_edit" {
+            let vc = segue.destination as! EditPartViewController
+            
+            vc.currentPartObject = currentPartObject
+        }
+    }
 
 }

@@ -17,6 +17,7 @@
 		9A9E361D2620B18B00B469DD /* ATPPartsObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A9E361C2620B18B00B469DD /* ATPPartsObject.swift */; };
 		9A9E361F2620C43000B469DD /* PartsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A9E361E2620C43000B469DD /* PartsTableViewCell.swift */; };
 		9A9E36242620CC5C00B469DD /* PartsDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A9E36232620CC5C00B469DD /* PartsDetailViewController.swift */; };
+		9A9E36262620D88300B469DD /* EditPartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A9E36252620D88300B469DD /* EditPartViewController.swift */; };
 		DF553D5B2C9C7F3484600EF7 /* Pods_Flight_Docs_Inventory_Manager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 949670B4B7225CEBF7288F73 /* Pods_Flight_Docs_Inventory_Manager.framework */; };
 /* End PBXBuildFile section */
 
@@ -36,6 +37,7 @@
 		9A9E361C2620B18B00B469DD /* ATPPartsObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ATPPartsObject.swift; sourceTree = "<group>"; };
 		9A9E361E2620C43000B469DD /* PartsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartsTableViewCell.swift; sourceTree = "<group>"; };
 		9A9E36232620CC5C00B469DD /* PartsDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartsDetailViewController.swift; sourceTree = "<group>"; };
+		9A9E36252620D88300B469DD /* EditPartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = EditPartViewController.swift; path = "../../../raw images/EditPartViewController.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +117,7 @@
 				9A9E36082620A45B00B469DD /* SplashScreen.swift */,
 				9A9E361A2620ADDA00B469DD /* HomeViewController.swift */,
 				9A9E36232620CC5C00B469DD /* PartsDetailViewController.swift */,
+				9A9E36252620D88300B469DD /* EditPartViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -244,6 +247,7 @@
 				9A9E361F2620C43000B469DD /* PartsTableViewCell.swift in Sources */,
 				9A9E36092620A45B00B469DD /* SplashScreen.swift in Sources */,
 				9A9E36052620A45B00B469DD /* AppDelegate.swift in Sources */,
+				9A9E36262620D88300B469DD /* EditPartViewController.swift in Sources */,
 				9A9E36072620A45B00B469DD /* SceneDelegate.swift in Sources */,
 				9A9E361D2620B18B00B469DD /* ATPPartsObject.swift in Sources */,
 				9A9E361B2620ADDA00B469DD /* HomeViewController.swift in Sources */,

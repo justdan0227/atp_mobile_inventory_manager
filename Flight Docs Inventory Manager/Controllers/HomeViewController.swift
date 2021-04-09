@@ -42,6 +42,9 @@ class HomeViewController: UIViewController {
         }
     }
     
+    @IBAction func addPartPressed(_ sender: Any) {
+        performSegue(withIdentifier: "to_create", sender: nil)
+    }
 }
 
 extension HomeViewController: UITableViewDelegate {
@@ -69,7 +72,7 @@ extension HomeViewController: UITableViewDataSource {
         cell.part_number.text = "# \(atpPartsArray[indexPath.row].partNumber)"
         cell.in_stock_amount.text = "In Stock: \(atpPartsArray[indexPath.row].inStock)"
         
-        cell.part_image.sd_setImage(with: URL(string: atpPartsArray[indexPath.row].imageURL), placeholderImage: UIImage(named: "wait"))
+        cell.part_image.sd_setImage(with: URL(string: atpPartsArray[indexPath.row].imageURL), placeholderImage: UIImage(named: "default_image"))
         
         return cell
     }
