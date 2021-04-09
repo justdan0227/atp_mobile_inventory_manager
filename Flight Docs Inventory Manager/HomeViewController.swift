@@ -9,6 +9,8 @@ import UIKit
 
 class HomeViewController: UIViewController {
 
+    var atpPartsArray:[ATPPartsObject] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -25,5 +27,14 @@ class HomeViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
+    
+    @IBAction func listParts(_ sender: Any) {
+        
+        var obj = ATPPartsObject()
+        
+        obj.getPart(partNumber: "") { errSecSucces,returnedArray  in
+            print ("Made it")
+            self.atpPartsArray = returnedArray
+        }
+    }
 }

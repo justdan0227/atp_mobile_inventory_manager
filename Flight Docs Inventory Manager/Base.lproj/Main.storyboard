@@ -77,43 +77,43 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CREATE NEW" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5ZI-05-tgU">
-                                <rect key="frame" x="154.5" y="264" width="105" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LIST PARTS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cPw-dJ-T8D">
-                                <rect key="frame" x="161.5" y="324" width="91" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="RECEIVE PART" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lyc-D7-Y7h">
-                                <rect key="frame" x="150.5" y="384" width="113" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CONSUME PART" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NMf-t3-436">
-                                <rect key="frame" x="142" y="450" width="130" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="axh-cY-Vhu">
+                                <rect key="frame" x="158.5" y="285" width="97" height="30"/>
+                                <state key="normal" title="CREATE PART"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FjX-H3-BKB">
+                                <rect key="frame" x="166" y="344" width="82" height="30"/>
+                                <state key="normal" title="LIST PARTS"/>
+                                <connections>
+                                    <action selector="listParts:" destination="oLj-B0-7Md" eventType="touchUpInside" id="8Sz-se-DBb"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aq3-6r-5PM">
+                                <rect key="frame" x="149" y="410" width="116" height="30"/>
+                                <state key="normal" title="CONSUME PART"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hXO-06-sOY">
+                                <rect key="frame" x="156" y="501" width="102" height="30"/>
+                                <state key="normal" title="RECEIVE PART"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j7X-QA-lDi">
+                                <rect key="frame" x="185.5" y="582" width="43" height="30"/>
+                                <state key="normal" title="MORE"/>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="zuu-hj-hJd"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="cPw-dJ-T8D" firstAttribute="top" secondItem="5ZI-05-tgU" secondAttribute="bottom" constant="39" id="Ijg-Uz-c9D"/>
-                            <constraint firstItem="NMf-t3-436" firstAttribute="top" secondItem="Lyc-D7-Y7h" secondAttribute="bottom" constant="45" id="K0m-gX-cLW"/>
-                            <constraint firstItem="cPw-dJ-T8D" firstAttribute="centerX" secondItem="qea-Lb-WEn" secondAttribute="centerX" id="Lo4-Qe-uaV"/>
-                            <constraint firstItem="NMf-t3-436" firstAttribute="centerX" secondItem="qea-Lb-WEn" secondAttribute="centerX" id="Y7b-3H-A3H"/>
-                            <constraint firstItem="5ZI-05-tgU" firstAttribute="centerX" secondItem="qea-Lb-WEn" secondAttribute="centerX" id="ZiM-kd-gsr"/>
-                            <constraint firstItem="Lyc-D7-Y7h" firstAttribute="top" secondItem="cPw-dJ-T8D" secondAttribute="bottom" constant="39" id="bVv-Uc-dZR"/>
-                            <constraint firstItem="5ZI-05-tgU" firstAttribute="top" secondItem="zuu-hj-hJd" secondAttribute="top" constant="176" id="ley-TU-tTJ"/>
-                            <constraint firstItem="Lyc-D7-Y7h" firstAttribute="centerX" secondItem="qea-Lb-WEn" secondAttribute="centerX" id="mMp-YA-M9H"/>
-                            <constraint firstItem="5ZI-05-tgU" firstAttribute="centerX" secondItem="qea-Lb-WEn" secondAttribute="centerX" id="uak-3f-hVO"/>
+                            <constraint firstItem="j7X-QA-lDi" firstAttribute="top" secondItem="hXO-06-sOY" secondAttribute="bottom" constant="51" id="30C-Uq-a5l"/>
+                            <constraint firstItem="FjX-H3-BKB" firstAttribute="centerX" secondItem="qea-Lb-WEn" secondAttribute="centerX" id="7gX-IB-wl2"/>
+                            <constraint firstItem="hXO-06-sOY" firstAttribute="centerX" secondItem="qea-Lb-WEn" secondAttribute="centerX" id="EFF-s2-tW1"/>
+                            <constraint firstItem="aq3-6r-5PM" firstAttribute="top" secondItem="FjX-H3-BKB" secondAttribute="bottom" constant="36" id="IzP-jm-1rX"/>
+                            <constraint firstItem="axh-cY-Vhu" firstAttribute="centerX" secondItem="qea-Lb-WEn" secondAttribute="centerX" id="KoG-Xy-kg2"/>
+                            <constraint firstItem="FjX-H3-BKB" firstAttribute="top" secondItem="axh-cY-Vhu" secondAttribute="bottom" constant="29" id="PuI-zJ-lgl"/>
+                            <constraint firstItem="hXO-06-sOY" firstAttribute="top" secondItem="aq3-6r-5PM" secondAttribute="bottom" constant="61" id="iGi-ar-RZe"/>
+                            <constraint firstItem="j7X-QA-lDi" firstAttribute="centerX" secondItem="qea-Lb-WEn" secondAttribute="centerX" id="iKY-SW-YTL"/>
+                            <constraint firstItem="axh-cY-Vhu" firstAttribute="top" secondItem="zuu-hj-hJd" secondAttribute="top" constant="197" id="jee-On-y7K"/>
+                            <constraint firstItem="aq3-6r-5PM" firstAttribute="centerX" secondItem="qea-Lb-WEn" secondAttribute="centerX" id="xC0-P3-9JZ"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="HOME VIEW" id="OJm-f1-2nR"/>

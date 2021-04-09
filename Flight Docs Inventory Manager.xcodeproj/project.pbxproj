@@ -14,6 +14,7 @@
 		9A9E360E2620A45C00B469DD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9A9E360D2620A45C00B469DD /* Assets.xcassets */; };
 		9A9E36112620A45C00B469DD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A9E360F2620A45C00B469DD /* LaunchScreen.storyboard */; };
 		9A9E361B2620ADDA00B469DD /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A9E361A2620ADDA00B469DD /* HomeViewController.swift */; };
+		9A9E361D2620B18B00B469DD /* ATPPartsObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A9E361C2620B18B00B469DD /* ATPPartsObject.swift */; };
 		DF553D5B2C9C7F3484600EF7 /* Pods_Flight_Docs_Inventory_Manager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 949670B4B7225CEBF7288F73 /* Pods_Flight_Docs_Inventory_Manager.framework */; };
 /* End PBXBuildFile section */
 
@@ -30,6 +31,7 @@
 		9A9E36102620A45C00B469DD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9A9E36122620A45C00B469DD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9A9E361A2620ADDA00B469DD /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		9A9E361C2620B18B00B469DD /* ATPPartsObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ATPPartsObject.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,7 +60,6 @@
 				4A0BF8D9F883C70E038A6234 /* Pods-Flight Docs Inventory Manager.debug.xcconfig */,
 				7627F2C2AA479CCFDA210030 /* Pods-Flight Docs Inventory Manager.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -91,6 +92,7 @@
 				9A9E360D2620A45C00B469DD /* Assets.xcassets */,
 				9A9E360F2620A45C00B469DD /* LaunchScreen.storyboard */,
 				9A9E36122620A45C00B469DD /* Info.plist */,
+				9A9E361C2620B18B00B469DD /* ATPPartsObject.swift */,
 			);
 			path = "Flight Docs Inventory Manager";
 			sourceTree = "<group>";
@@ -106,6 +108,7 @@
 				9A9E35FD2620A45B00B469DD /* Sources */,
 				9A9E35FE2620A45B00B469DD /* Frameworks */,
 				9A9E35FF2620A45B00B469DD /* Resources */,
+				B7DC5903AC71B8A833A586EE /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -184,6 +187,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		B7DC5903AC71B8A833A586EE /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Flight Docs Inventory Manager/Pods-Flight Docs Inventory Manager-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Flight Docs Inventory Manager/Pods-Flight Docs Inventory Manager-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Flight Docs Inventory Manager/Pods-Flight Docs Inventory Manager-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -194,6 +214,7 @@
 				9A9E36092620A45B00B469DD /* SplashScreen.swift in Sources */,
 				9A9E36052620A45B00B469DD /* AppDelegate.swift in Sources */,
 				9A9E36072620A45B00B469DD /* SceneDelegate.swift in Sources */,
+				9A9E361D2620B18B00B469DD /* ATPPartsObject.swift in Sources */,
 				9A9E361B2620ADDA00B469DD /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
