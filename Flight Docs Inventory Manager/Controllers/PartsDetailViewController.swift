@@ -19,25 +19,49 @@ class PartsDetailViewController: UIViewController {
     @IBOutlet var activeToggle: UISwitch!
     @IBOutlet var on_hand: UILabel!
     @IBOutlet var part_image: UIImageView!
+    @IBOutlet var part_cost: UILabel!
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
+    // ===================================================
+    //
+    // ===================================================
+    fileprivate func displayTheObject() {
         // Do any additional setup after loading the view.
         
         part_name.text = "Name: \(currentPartObject!.name)"
         part_number.text = "Part # \(currentPartObject!.partNumber)"
         part_description.text = currentPartObject!.description
         on_hand.text = "In Stock: \(currentPartObject!.inStock)"
-        part_image.sd_setImage(with: URL(string: currentPartObject!.imageURL), placeholderImage: UIImage(named: "wait"))
+        part_cost.text = "Cost: \(currentPartObject!.cost)"
         
+        activeToggle.isOn = currentPartObject!.isActive
+        
+        part_image.sd_setImage(with: URL(string: currentPartObject!.imageURL), placeholderImage: UIImage(named: "default_image"))
+    }
+    
+    // ===================================================
+    //
+    // ===================================================
+    override func viewDidLoad() {
+        super.viewDidLoad()
         
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        displayTheObject()
+    }
+    
+    
+    // ===================================================
+    //
+    // ===================================================
     @IBAction func edit_pressed(_ sender: Any) {
         performSegue(withIdentifier: "to_edit", sender: nil)
     }
     
+    // ===================================================
+    //
+    // ===================================================
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.identifier == "to_edit" {

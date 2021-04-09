@@ -10,43 +10,89 @@ import SDWebImage
 
 class HomeViewController: UIViewController {
 
-    var atpPartsArray:[ATPPartsObject] = []
+    var allAtpPartsArray:[ATPPartsObject] = []
     
+    var filteredAtpPartsArray:[ATPPartsObject] = []
+    
+    var showActiveOnly = false
     var selectedIndex = -1
     
+    @IBOutlet var activeSegControl: UISegmentedControl!
     @IBOutlet var partsTableView: UITableView!
     
+    // ===================================================
+    //
+    // ===================================================
     override func viewDidLoad() {
         super.viewDidLoad()
 
     }
     
+    // ===================================================
+    //
+    // ===================================================
+    fileprivate func getFilteredArray() {
+        if self.showActiveOnly {
+            
+            self.filteredAtpPartsArray.removeAll()
+            
+            for obj in self.allAtpPartsArray {
+                print (obj.isActive)
+                if obj.isActive  {
+                    self.filteredAtpPartsArray.append(obj)
+                }
+            }
+        }
+        else  {
+            self.filteredAtpPartsArray = self.allAtpPartsArray
+        }
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
         ATPPartsObject.getAllParts() { errSecSucces,returnedArray  in
-            print ("Made it")
-            self.atpPartsArray = returnedArray
+            
+            self.allAtpPartsArray = returnedArray
+            
+            self.getFilteredArray()
+            
             self.partsTableView.reloadData()
         }
 
     }
     
 
+    // ===================================================
+    //
+    // ===================================================
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.identifier == "to_detail" {
             
             let vc = segue.destination as! PartsDetailViewController
             
-            vc.currentPartObject = atpPartsArray[selectedIndex]
+            vc.currentPartObject = filteredAtpPartsArray[selectedIndex]
         }
     }
     
+    // ===================================================
+    //
+    // ===================================================
     @IBAction func addPartPressed(_ sender: Any) {
         performSegue(withIdentifier: "to_create", sender: nil)
     }
+    
+    @IBAction func activePartToggle(_ sender: UISegmentedControl) {
+        
+        showActiveOnly = (sender.selectedSegmentIndex == 0) ? false : true
+        getFilteredArray()
+        partsTableView.reloadData()
+    }
 }
-
+// ===================================================
+//
+// ===================================================
 extension HomeViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -58,25 +104,27 @@ extension HomeViewController: UITableViewDelegate {
     
 }
 
+
+// ===================================================
+//
+// ===================================================
 extension HomeViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return atpPartsArray.count
+        return filteredAtpPartsArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "part_cell") as? PartsTableViewCell else {return UITableViewCell()}
         
-        cell.part_name.text = "Name: \(atpPartsArray[indexPath.row].name)"
-        cell.part_number.text = "# \(atpPartsArray[indexPath.row].partNumber)"
-        cell.in_stock_amount.text = "In Stock: \(atpPartsArray[indexPath.row].inStock)"
+        cell.part_name.text = "Name: \(filteredAtpPartsArray[indexPath.row].name)"
+        cell.part_number.text = "# \(filteredAtpPartsArray[indexPath.row].partNumber)"
+        cell.in_stock_amount.text = "In Stock: \(filteredAtpPartsArray[indexPath.row].inStock)"
         
-        cell.part_image.sd_setImage(with: URL(string: atpPartsArray[indexPath.row].imageURL), placeholderImage: UIImage(named: "default_image"))
+        cell.part_image.sd_setImage(with: URL(string: filteredAtpPartsArray[indexPath.row].imageURL), placeholderImage: UIImage(named: "default_image"))
         
         return cell
     }
     
-    
 }
-
