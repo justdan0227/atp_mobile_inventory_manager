@@ -7,6 +7,7 @@
 
 import UIKit
 import SDWebImage
+import SCLAlertView
 
 class HomeViewController: UIViewController {
 
@@ -25,7 +26,6 @@ class HomeViewController: UIViewController {
     // ===================================================
     override func viewDidLoad() {
         super.viewDidLoad()
-
     }
     
     // ===================================================
@@ -48,10 +48,24 @@ class HomeViewController: UIViewController {
         }
     }
     
+    // ===================================================
+    //
+    // ===================================================
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        ATPPartsObject.getAllParts() { errSecSucces,returnedArray  in
+        ATPPartsObject.getAllParts() { errSecSucces,returnedArray, errorMsg  in
+            
+            if !errSecSucces {
+                
+                
+                let appearance = SCLAlertView.SCLAppearance(
+                    showCircularIcon: false
+                )
+                let alertView = SCLAlertView(appearance: appearance)
+                alertView.showError("DB Error", subTitle: errorMsg)
+                return
+            }
             
             self.allAtpPartsArray = returnedArray
             
@@ -102,6 +116,20 @@ extension HomeViewController: UITableViewDelegate {
         performSegue(withIdentifier: "to_detail", sender: nil)
     }
     
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+           
+           if editingStyle == .delete {
+            let id = filteredAtpPartsArray[indexPath.row].id
+            ATPPartsObject.deletePart(id: id) { errSecSucce in
+                print ("DELETED")
+                self.filteredAtpPartsArray.remove(at: indexPath.row)
+               tableView.deleteRows(at: [indexPath], with: .bottom)
+
+            }
+            
+           }
+       }
+    
 }
 
 
@@ -110,20 +138,29 @@ extension HomeViewController: UITableViewDelegate {
 // ===================================================
 extension HomeViewController: UITableViewDataSource {
     
+    // ===================================================
+    //
+    // ===================================================
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return filteredAtpPartsArray.count
     }
     
+    // ===================================================
+    //
+    // ===================================================
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "part_cell") as? PartsTableViewCell else {return UITableViewCell()}
         
-        cell.part_name.text = "Name: \(filteredAtpPartsArray[indexPath.row].name)"
-        cell.part_number.text = "# \(filteredAtpPartsArray[indexPath.row].partNumber)"
-        cell.in_stock_amount.text = "In Stock: \(filteredAtpPartsArray[indexPath.row].inStock)"
+        let partObject = filteredAtpPartsArray[indexPath.row]
         
-        cell.part_image.sd_setImage(with: URL(string: filteredAtpPartsArray[indexPath.row].imageURL), placeholderImage: UIImage(named: "default_image"))
+        cell.part_name.text = "Name: \(partObject.name)"
+        cell.part_number.text = "# \(partObject.partNumber)"
+        cell.part_number.textColor = (partObject.isActive ? .black : .red)
+        cell.in_stock_amount.text = "In Stock: \(partObject.inStock)"
         
+        cell.part_image.sd_setImage(with: URL(string: partObject.imageURL), placeholderImage: UIImage(named: "default_image"))
+        cell.backgroundColor = indexPath.row % 2 == 0 ? #colorLiteral(red: 0.4745098054, green: 0.8392156959, blue: 0.9764705896, alpha: 1) : .white
         return cell
     }
     

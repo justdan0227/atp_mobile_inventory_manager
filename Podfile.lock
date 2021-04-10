@@ -1,5 +1,7 @@
 PODS:
   - Alamofire (5.4.2)
+  - IQKeyboardManagerSwift (6.5.6)
+  - SCLAlertView (0.8)
   - SDWebImage (5.11.0):
     - SDWebImage/Core (= 5.11.0)
   - SDWebImage/Core (5.11.0)
@@ -7,20 +9,26 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire
+  - IQKeyboardManagerSwift
+  - SCLAlertView
   - SDWebImage
   - SwiftyJSON
 
 SPEC REPOS:
   trunk:
     - Alamofire
+    - IQKeyboardManagerSwift
+    - SCLAlertView
     - SDWebImage
     - SwiftyJSON
 
 SPEC CHECKSUMS:
   Alamofire: bfbc4c2fe5909b1d94fb4ef2277c6b3727ef5dae
+  IQKeyboardManagerSwift: c7df9d2deb356c04522f5c4b7b6e4ce4d8ed94fe
+  SCLAlertView: 6a77bb2edfc65e04dbe57725546cb4107a506b85
   SDWebImage: 7acbb57630ac7db4a495547fb73916ff3e432f6b
   SwiftyJSON: 2f33a42c6fbc52764d96f13368585094bfd8aa5e
 
-PODFILE CHECKSUM: 0bab6236212e80cef8d80c772ce6b613e2529c2c
+PODFILE CHECKSUM: 1f1a387ea0f8275ce3982df94d7c3c8560f2df83
 
 COCOAPODS: 1.10.1

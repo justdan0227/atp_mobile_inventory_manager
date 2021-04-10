@@ -10,6 +10,7 @@ target 'Flight Docs Inventory Manager' do
   pod 'SwiftyJSON'
   pod 'Alamofire'
   pod 'SDWebImage'
-
+  pod 'SCLAlertView'
+  pod 'IQKeyboardManagerSwift'
 
 end

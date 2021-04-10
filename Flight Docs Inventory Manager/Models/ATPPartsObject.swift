@@ -11,20 +11,8 @@ import SwiftyJSON
 
 class  ATPPartsObject {
     
-    /*
-     {
-         "id": 1,
-         "cost": 7.99,
-         "partNumber": "158CDWS1",
-         "name": "Grip-Rite 158CDWS1 1-5/8-Inch 6 Coarse Thread Drywall Screw with Bugle Head, 1 Pound",
-         "description": "Exclusive FILTECH media technology screens out more harmful contaminants for greater engine protection. Strong steel base plates and housings prevent warpage, leaks and poor fit. Silicone anti-drain back valve ensures a supply of clean oil when the car is started. High lubricity gasket design provides a tight seal, yet easy removal. Double-locked rolled seam forms a leak free canister.",
-         "isActive": true,
-         "image": "http://localhost:9001/images/drywallscrews.jpg",
-         "inStock": 3,
-         "_id": "8506bca8ae95491a83f1ed68091b7294"
-       },
-     */
-    var id: String = ""
+    
+    var id: Int = 0
     var cost: Double = 0.0
     //var cost: Decimal = 0.0
     var partNumber: String = ""
@@ -38,18 +26,37 @@ class  ATPPartsObject {
     static let ATP_DB_URL = "http://localhost:9001/parts"
     
     //mutating func getCurrentWeather(city: String, state: String, completion: @escaping(_ success : Bool) ->
-    
+    // ===================================================
+    //
+    // ===================================================
     func getPart(partNumber: String, completion: @escaping(_ success : Bool, _ returnedPart: ATPPartsObject) -> Void) {
         
     }
-                                        
-    static func getAllParts( completion: @escaping(_ success : Bool, _ returnedArray:[ATPPartsObject]) -> Void) {
+           
+    // ===================================================
+    //
+    // ===================================================
+    static func getAllParts( completion: @escaping(_ success : Bool, _ returnedArray:[ATPPartsObject], _ msg: String) -> Void) {
 
         //var urlString = city.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
         
         let parameters = ["id":"value"]
 
         AF.request(ATP_DB_URL, parameters: parameters).responseJSON { response in
+            
+            var errorMsg = ""
+            
+            switch response.result {
+                            case .success(let JSON):
+                                print("Success with JSON: \(JSON)")
+                                
+                            case .failure(let error):
+                                print(error.localizedDescription)
+                                // Prepare the popup assets
+                                errorMsg =  error.localizedDescription
+                                completion(false, [], errorMsg)
+                            }
+            
             
             let json = JSON(response.value as Any)
 
@@ -59,7 +66,7 @@ class  ATPPartsObject {
             for i in 0..<arrayCount {
                 let returnedPart:ATPPartsObject = ATPPartsObject()
                 
-                returnedPart.id = json[i]["id"].stringValue
+                returnedPart.id = json[i]["id"].intValue
                 returnedPart.name = json[i]["name"].stringValue
                 returnedPart.partNumber = json[i]["partNumber"].stringValue
                 returnedPart.inStock = json[i]["inStock"].intValue
@@ -71,10 +78,14 @@ class  ATPPartsObject {
 
             }
                         
-            completion(true, newArray)
+            completion(true, newArray, errorMsg)
         }
     }
     
+    
+    // ===================================================
+    //
+    // ===================================================
     static func createNewPart(newATPPartObject: ATPPartsObject,  completion: @escaping(_ success : Bool) -> Void) {
 
         let parameters = [
@@ -100,6 +111,9 @@ class  ATPPartsObject {
             completion(true)
         }
     
+    // ===================================================
+    //
+    // ===================================================
     static func updatePart(updatedATPPartObject: ATPPartsObject,  completion: @escaping(_ success : Bool) -> Void) {
 
         let parameters = [
@@ -114,7 +128,7 @@ class  ATPPartsObject {
         ] as [String : Any]
 
         
-        let urlString  = ATP_DB_URL+"/"+updatedATPPartObject.id
+        let urlString  = ATP_DB_URL+"/"+"\(updatedATPPartObject.id)"
         
         AF.request(urlString,
                    method: .put,
@@ -127,4 +141,24 @@ class  ATPPartsObject {
         
             completion(true)
         }
+    
+    // ===================================================
+    //
+    // ===================================================
+    static func deletePart(id: Int,  completion: @escaping(_ success : Bool) -> Void) {
+        
+        let urlString  = ATP_DB_URL + "/" + "\(id)"
+        
+        AF.request(urlString,
+                   method: .delete,
+                   parameters: nil,
+                   encoding: JSONEncoding.default,
+                   headers: nil).responseJSON { response  in
+            
+                    debugPrint(response.result)
+        }
+        
+            completion(true)
+        }
+
 }

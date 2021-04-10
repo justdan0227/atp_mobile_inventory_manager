@@ -7,10 +7,11 @@
 
 import UIKit
 import SDWebImage
+import SCLAlertView
+import IQKeyboardManagerSwift
 
 class PartsDetailViewController: UIViewController {
 
-    
     var currentPartObject: ATPPartsObject?
     
     @IBOutlet var part_name: UILabel!
@@ -20,6 +21,7 @@ class PartsDetailViewController: UIViewController {
     @IBOutlet var on_hand: UILabel!
     @IBOutlet var part_image: UIImageView!
     @IBOutlet var part_cost: UILabel!
+    @IBOutlet var consumeBtn: UIButton!
     
     // ===================================================
     //
@@ -36,6 +38,7 @@ class PartsDetailViewController: UIViewController {
         activeToggle.isOn = currentPartObject!.isActive
         
         part_image.sd_setImage(with: URL(string: currentPartObject!.imageURL), placeholderImage: UIImage(named: "default_image"))
+        consumeBtn.isHidden = (currentPartObject!.inStock == 0)
     }
     
     // ===================================================
@@ -43,7 +46,7 @@ class PartsDetailViewController: UIViewController {
     // ===================================================
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        IQKeyboardManager.shared.shouldPlayInputClicks = false
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -70,5 +73,78 @@ class PartsDetailViewController: UIViewController {
             vc.currentPartObject = currentPartObject
         }
     }
+    
 
+    // ===================================================
+    //
+    // ===================================================
+    @IBAction func consumeBtnPressed(_ sender: Any) {
+        let receivedAmount = promptForAmount(isConsume: true, title: "Received Amount",
+                        subTitle: "Plese enter the received amount")
+
+
+    }
+    // ===================================================
+    //
+    // ===================================================
+    @IBAction func receiveBtnPressed(_ sender: Any) {
+        let receivedAmount = promptForAmount(isConsume: false, title: "Received Amount",
+                        subTitle: "Plese enter the received amount")
+    }
+    
+    // ===================================================
+    //
+    // ===================================================
+    func promptForAmount(isConsume: Bool, title: String, subTitle: String) {
+    
+     let appearance = SCLAlertView.SCLAppearance(
+         showCloseButton: false, showCircularIcon: false
+     )
+     
+     let alertView = SCLAlertView(appearance: appearance)
+     
+     let txt = alertView.addTextField("0")
+        
+    txt.becomeFirstResponder()
+     txt.keyboardType = .numberPad
+     
+        alertView.addButton(isConsume ? "CONSUME" : " RECEIVE",
+                            backgroundColor: UIColor(red: 0.216, green: 0.780, blue: 0.349, alpha: 1.00),
+                            textColor: .white) {
+        let intString = txt.text!
+        if intString.count != 0 {
+            let amount = Int(intString) ?? 0
+            if isConsume {
+                if (self.currentPartObject!.inStock - amount) < 0 {
+                    SCLAlertView().showError("CONSUME ERROR",
+                                             subTitle: "You can not consume more than \(self.currentPartObject!.inStock) items")
+                    return
+                }
+                self.currentPartObject?.inStock -= amount
+            }
+            else {
+                self.currentPartObject?.inStock += amount
+            }
+            self.on_hand.text = "In Stock: \(self.currentPartObject!.inStock)"
+            ATPPartsObject.updatePart(updatedATPPartObject: self.currentPartObject!) { errSecSuccess in
+                
+            }
+        }
+    
+     }
+        
+     alertView.addButton("CANCEL", backgroundColor: .red, textColor: .white) {
+     }
+
+     
+     alertView.showTitle(
+        title, // Title of view
+         subTitle: subTitle,
+         timeout: nil, // String of view
+         completeText: "CANCEL", // Optional button value, default: ""
+         style: .edit // Styles - see below.
+     )
+     // case success, error, no
+     
+    }
 }

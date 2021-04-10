@@ -77,6 +77,34 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cFk-7J-5qN">
+                                <rect key="frame" x="48" y="92" width="84" height="30"/>
+                                <color key="backgroundColor" systemColor="systemRedColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="84" id="Id9-vb-hlq"/>
+                                    <constraint firstAttribute="height" constant="30" id="yD3-2s-mVP"/>
+                                </constraints>
+                                <state key="normal" title="CONSUME">
+                                    <color key="titleColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="consumeBtnPressed:" destination="C1F-L0-IWN" eventType="touchUpInside" id="9ZI-MX-V4b"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lyH-qL-gO2">
+                                <rect key="frame" x="247" y="92" width="84" height="30"/>
+                                <color key="backgroundColor" systemColor="systemGreenColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="84" id="9NH-8c-qzL"/>
+                                    <constraint firstAttribute="height" constant="30" id="tUQ-ht-Hj1"/>
+                                </constraints>
+                                <state key="normal" title="RECEIVE">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="receiveBtnPressed:" destination="C1F-L0-IWN" eventType="touchUpInside" id="GT0-4u-fsi"/>
+                                </connections>
+                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2LK-rz-yV8">
                                 <rect key="frame" x="33" y="130" width="327" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -126,6 +154,7 @@
                         <viewLayoutGuide key="safeArea" id="yOs-nt-IxF"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="cFk-7J-5qN" firstAttribute="trailing" secondItem="pR3-FJ-Who" secondAttribute="trailing" id="1HK-Js-hr3"/>
                             <constraint firstItem="0Na-eY-Z2t" firstAttribute="centerY" secondItem="Bkb-Rp-cbM" secondAttribute="centerY" id="FcF-Kh-iA4"/>
                             <constraint firstItem="lfY-Ir-bzD" firstAttribute="leading" secondItem="yOs-nt-IxF" secondAttribute="leading" constant="111" id="L0q-VG-fdd"/>
                             <constraint firstItem="Bkb-Rp-cbM" firstAttribute="leading" secondItem="0Na-eY-Z2t" secondAttribute="trailing" constant="48" id="TNW-Au-coF"/>
@@ -133,7 +162,9 @@
                             <constraint firstItem="pR3-FJ-Who" firstAttribute="leading" secondItem="0Na-eY-Z2t" secondAttribute="leading" id="V84-4Z-kSt"/>
                             <constraint firstItem="lfY-Ir-bzD" firstAttribute="top" secondItem="Bkb-Rp-cbM" secondAttribute="bottom" constant="28" id="Y6u-ul-5rp"/>
                             <constraint firstItem="yOs-nt-IxF" firstAttribute="trailing" secondItem="2LK-rz-yV8" secondAttribute="trailing" constant="54" id="ZkH-Ns-uRl"/>
+                            <constraint firstItem="yOs-nt-IxF" firstAttribute="trailing" secondItem="lyH-qL-gO2" secondAttribute="trailing" constant="83" id="asp-ha-acL"/>
                             <constraint firstItem="2LK-rz-yV8" firstAttribute="leading" secondItem="YgX-rO-dmj" secondAttribute="leading" id="cgy-Pp-TJb"/>
+                            <constraint firstItem="cFk-7J-5qN" firstAttribute="baseline" secondItem="lyH-qL-gO2" secondAttribute="baseline" id="cpM-3Z-aHa"/>
                             <constraint firstItem="pR3-FJ-Who" firstAttribute="top" secondItem="F3u-WX-xCW" secondAttribute="bottom" constant="8" symbolic="YES" id="dsN-jE-coQ"/>
                             <constraint firstItem="YgX-rO-dmj" firstAttribute="top" secondItem="2LK-rz-yV8" secondAttribute="bottom" constant="8" symbolic="YES" id="dzy-8k-SCm"/>
                             <constraint firstItem="pR3-FJ-Who" firstAttribute="leading" secondItem="yOs-nt-IxF" secondAttribute="leading" constant="38" id="ere-BD-oUn"/>
@@ -143,6 +174,7 @@
                             <constraint firstItem="F3u-WX-xCW" firstAttribute="centerX" secondItem="gPH-bg-qDf" secondAttribute="centerX" id="ocF-DA-AQ1"/>
                             <constraint firstItem="F3u-WX-xCW" firstAttribute="top" secondItem="KwA-rh-pTs" secondAttribute="bottom" constant="31" id="pdJ-KX-ZJ9"/>
                             <constraint firstItem="yOs-nt-IxF" firstAttribute="trailing" secondItem="lfY-Ir-bzD" secondAttribute="trailing" constant="144" id="phL-BX-cIr"/>
+                            <constraint firstItem="2LK-rz-yV8" firstAttribute="top" secondItem="cFk-7J-5qN" secondAttribute="bottom" constant="8" symbolic="YES" id="qKe-3r-Tzp"/>
                             <constraint firstItem="F3u-WX-xCW" firstAttribute="leading" secondItem="yOs-nt-IxF" secondAttribute="leading" constant="27" id="rfl-um-mbn"/>
                             <constraint firstItem="2LK-rz-yV8" firstAttribute="leading" secondItem="yOs-nt-IxF" secondAttribute="leading" constant="33" id="vmK-Af-zRg"/>
                             <constraint firstItem="yOs-nt-IxF" firstAttribute="bottom" secondItem="lfY-Ir-bzD" secondAttribute="bottom" constant="107" id="yzd-Fk-t4A"/>
@@ -157,6 +189,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="activeToggle" destination="0Na-eY-Z2t" id="jpr-Hk-Jfh"/>
+                        <outlet property="consumeBtn" destination="cFk-7J-5qN" id="8MN-ta-qjB"/>
                         <outlet property="on_hand" destination="pR3-FJ-Who" id="PmM-Ks-vXW"/>
                         <outlet property="part_cost" destination="KwA-rh-pTs" id="SkS-RI-NTh"/>
                         <outlet property="part_description" destination="F3u-WX-xCW" id="JyI-sw-Lnf"/>
@@ -264,8 +297,8 @@
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VPh-oT-oWo" userLabel="Select Image Button">
-                                <rect key="frame" x="162.5" y="778" width="89" height="30"/>
-                                <state key="normal" title="Select Image"/>
+                                <rect key="frame" x="156" y="778" width="102" height="30"/>
+                                <state key="normal" title="Set Image URL"/>
                                 <connections>
                                     <action selector="select_part_image_pressed:" destination="807-ma-m1G" eventType="touchUpInside" id="7uZ-TL-LLI"/>
                                 </connections>
@@ -481,7 +514,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Ceo-zJ-1jC"/>
+        <segue reference="Ur4-zj-pYh"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="default_image" width="512" height="410"/>
@@ -491,6 +524,12 @@
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGreenColor">
+            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
