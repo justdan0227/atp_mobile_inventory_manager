@@ -62,6 +62,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="ZpX-mm-NMu"/>
                     <connections>
+                        <outlet property="versionLabel" destination="Qbj-f9-nr0" id="xuT-MU-pWu"/>
                         <segue destination="oLj-B0-7Md" kind="show" identifier="to_home_view" id="WcR-Wz-kEa"/>
                     </connections>
                 </viewController>

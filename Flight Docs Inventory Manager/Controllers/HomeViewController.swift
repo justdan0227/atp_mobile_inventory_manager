@@ -116,13 +116,26 @@ extension HomeViewController: UITableViewDelegate {
         performSegue(withIdentifier: "to_detail", sender: nil)
     }
     
+    // ===================================================
+    //
+    // ===================================================
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
            
            if editingStyle == .delete {
+            // get the ID of the object in this row
             let id = filteredAtpPartsArray[indexPath.row].id
+            
+            // Remove the object form the FULL list as well as the filtered list
+            
             ATPPartsObject.deletePart(id: id) { errSecSucce in
                 print ("DELETED")
                 self.filteredAtpPartsArray.remove(at: indexPath.row)
+                for (index, atpPart) in self.allAtpPartsArray.enumerated() {
+                    if atpPart.id == id {
+                        self.allAtpPartsArray.remove(at: index)
+                        break
+                    }
+                 }
                tableView.deleteRows(at: [indexPath], with: .bottom)
 
             }
@@ -155,7 +168,7 @@ extension HomeViewController: UITableViewDataSource {
         let partObject = filteredAtpPartsArray[indexPath.row]
         
         cell.part_name.text = "Name: \(partObject.name)"
-        cell.part_number.text = "# \(partObject.partNumber)"
+        cell.part_number.text = "Part #: \(partObject.partNumber)"
         cell.part_number.textColor = (partObject.isActive ? .black : .red)
         cell.in_stock_amount.text = "In Stock: \(partObject.inStock)"
         

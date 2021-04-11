@@ -9,9 +9,11 @@ import UIKit
 
 class SplashScreen: UIViewController {
 
+    @IBOutlet var versionLabel: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        versionLabel.text = HelperFunctions.versionBuild()
     }
 
     @IBAction func continueBtnPressed(_ sender: Any) {
